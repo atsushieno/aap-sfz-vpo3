@@ -1,0 +1,24 @@
+plugins { id 'com.android.application'; id 'kotlin-android'; id 'org.jetbrains.kotlin.plugin.compose' }
+
+android {
+    namespace 'org.androidaudioplugin.sfz.vpo3'
+    compileSdk 37
+    defaultConfig {
+        applicationId 'org.androidaudioplugin.sfz.vpo3'
+        minSdk 29
+        targetSdk 37
+        versionCode 1
+        versionName '1.0.0'
+    }
+    // Resource sessions use AssetManager.openFd, including for SFZ includes.
+    androidResources { noCompress '' }
+    buildFeatures { compose true }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_11; targetCompatibility JavaVersion.VERSION_11 }
+    kotlinOptions { jvmTarget = '11' }
+}
+dependencies {
+    implementation project(':sfz-provider')
+    implementation platform('androidx.compose:compose-bom:2026.04.01')
+    implementation 'androidx.activity:activity-compose:1.13.0'
+    implementation 'androidx.compose.material3:material3'
+}
