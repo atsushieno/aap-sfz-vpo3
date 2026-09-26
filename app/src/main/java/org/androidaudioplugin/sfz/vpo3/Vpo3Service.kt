@@ -13,7 +13,7 @@ class Vpo3Service : AssetSfzResourceService() {
                     .map { name ->
                         val path = "$family/$name"
                         Instrument(path, "VPO3 / $family / ${name.removeSuffix(".sfz")}",
-                            "2", "vpo3", path, listOf(family, "libs"))
+                            "3", "vpo3", path, listOf(family, "libs"))
                     }
             }
     }
