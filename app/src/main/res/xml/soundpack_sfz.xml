@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The instruments are the SFZ files directly inside each family folder; `libs` holds the
+     shared includes and samples, so it is not an entry but is in each entry's scope. Bump the
+     revision whenever any file under assets/vpo3 changes: saved projects pin it. -->
+<packs>
+    <pack
+        id="org.studiorack.vpo3"
+        label="Virtual Playing Orchestra 3"
+        revision="3"
+        assetRoot="vpo3"
+        summary="StudioRack's compact, FLAC-based Virtual Playing Orchestra 3."
+        license="Creative Commons, varying by library: see Documentation/license.htm">
+        <entries pattern="Brass/*.sfz" group="Brass" scopes="Brass libs" />
+        <entries pattern="Keys/*.sfz" group="Keys" scopes="Keys libs" />
+        <entries pattern="Percussion/*.sfz" group="Percussion" scopes="Percussion libs" />
+        <entries pattern="Strings/*.sfz" group="Strings" scopes="Strings libs" />
+        <entries pattern="Vocals/*.sfz" group="Vocals" scopes="Vocals libs" />
+        <entries pattern="Woodwinds/*.sfz" group="Woodwinds" scopes="Woodwinds libs" />
+    </pack>
+</packs>
