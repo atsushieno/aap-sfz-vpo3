@@ -1,29 +1,31 @@
-plugins { id 'com.android.application'; id 'kotlin-android'; id 'org.jetbrains.kotlin.plugin.compose' }
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.compose.compiler)
+}
 
 android {
-    namespace 'org.androidaudioplugin.sfz.vpo3'
-    compileSdk 37
+    namespace = 'org.androidaudioplugin.sfz.vpo3'
+    compileSdk = libs.versions.android.compileSdk.get().toInteger()
     defaultConfig {
-        applicationId 'org.androidaudioplugin.sfz.vpo3'
-        minSdk 29
-        targetSdk 37
+        applicationId = 'org.androidaudioplugin.sfz.vpo3'
+        minSdk = libs.versions.android.minSdk.get().toInteger()
+        targetSdk = libs.versions.android.targetSdk.get().toInteger()
         // 2.x serves the soundpack contract; 1.x served SfzResourceService.V1.
-        versionCode 3
-        versionName '2.0.0'
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        versionCode = 3
+        versionName = '2.0.0'
+        testInstrumentationRunner = 'androidx.test.runner.AndroidJUnitRunner'
     }
     // Pack files are served as descriptor ranges of the APK, so nothing may be compressed.
     androidResources { noCompress '' }
-    buildFeatures { compose true }
-    compileOptions { sourceCompatibility JavaVersion.VERSION_11; targetCompatibility JavaVersion.VERSION_11 }
-    kotlinOptions { jvmTarget = '11' }
+    buildFeatures { compose = true }
+    compileOptions { sourceCompatibility = JavaVersion.VERSION_11; targetCompatibility = JavaVersion.VERSION_11 }
 }
 dependencies {
-    implementation 'org.androidaudioplugin.soundpack:soundpack-provider-sdk:0.1.0-dev'
-    implementation platform('androidx.compose:compose-bom:2026.04.01')
-    implementation 'androidx.activity:activity-compose:1.13.0'
-    implementation 'androidx.compose.material3:material3'
-    androidTestImplementation 'org.androidaudioplugin.soundpack:soundpack-testkit:0.1.0-dev'
-    androidTestImplementation 'androidx.test:runner:1.7.0'
-    androidTestImplementation 'junit:junit:4.13.2'
+    implementation libs.soundpack.provider.sdk
+    implementation platform(libs.compose.bom)
+    implementation libs.activity.compose
+    implementation libs.compose.material3
+    androidTestImplementation libs.soundpack.testkit
+    androidTestImplementation libs.androidx.test.runner
+    androidTestImplementation libs.junit
 }
